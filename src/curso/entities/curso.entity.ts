@@ -13,12 +13,14 @@ export class Curso {
     @Column()
     cargaHoraria: number;
 
-    @Column()
+    @Column({ type: 'date' })
     dataInicio: Date;
 
-    @OneToMany(() => Disciplina, disciplina => disciplina.id)
-    disciplina: Disciplina[]
-
+    @OneToMany(() => Disciplina, (disciplina) => disciplina.curso, {
+    cascade: true,
+    eager: true,
+  })
+    disciplinas: Disciplina[];
 
 
 }

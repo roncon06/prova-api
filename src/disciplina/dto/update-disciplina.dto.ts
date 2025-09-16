@@ -1,4 +1,11 @@
-import { PartialType } from '@nestjs/mapped-types';
-import { CreateDisciplinaDto } from './create-disciplina.dto';
+import {IsOptional, IsString } from 'class-validator';
 
-export class UpdateDisciplinaDto extends PartialType(CreateDisciplinaDto) {}
+
+export class UpdateDisciplinaDto {
+ 
+  @IsOptional() 
+  @IsString()
+  nome?: string;
+
+
+}

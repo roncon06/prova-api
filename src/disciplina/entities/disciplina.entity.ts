@@ -1,5 +1,5 @@
 import { Curso } from "src/curso/entities/curso.entity";
-import { Column, Entity, OneToMany, OneToOne, PrimaryGeneratedColumn } from "typeorm";
+import { Column, Entity, ManyToOne, OneToMany, OneToOne, PrimaryGeneratedColumn } from "typeorm";
 
 @Entity('disciplinas')
 export class Disciplina {
@@ -10,7 +10,7 @@ export class Disciplina {
     @Column()
     nome: string;
 
-    @OneToOne(() => Curso, curso => curso.id)
+    @ManyToOne(() => Curso, (curso) => curso.disciplinas, { onDelete: 'CASCADE' })
     curso: Curso;
 
 

@@ -1,5 +1,4 @@
 import { Injectable } from '@nestjs/common';
-import { CreateDisciplinaDto } from './dto/create-disciplina.dto';
 import { UpdateDisciplinaDto } from './dto/update-disciplina.dto';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Disciplina } from './entities/disciplina.entity';
@@ -11,9 +10,6 @@ export class DisciplinaService {
   private disciplinaRepository: Repository<Disciplina>,)
   {}
 
-  async create(createDisciplinaDto: CreateDisciplinaDto):Promise<Disciplina> {
-    return await this.disciplinaRepository.save(createDisciplinaDto);
-  }
 
   findAll(): Promise<Disciplina[]> {
     return this.disciplinaRepository.find();
@@ -32,7 +28,5 @@ export class DisciplinaService {
     return this.findOne(id);
   }
 
-  async remove(id: number): Promise<void> {
-    await this.disciplinaRepository.delete(id);
-  }
+  
 }
